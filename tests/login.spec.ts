@@ -43,7 +43,7 @@ test('Login with a valid user', {
   await loginPage.fillUserName(process.env.STANDARD_USERNAME);
   await loginPage.fillPassword(process.env.PASSWORD);
   await loginPage.clickLoginButton();
-  await expect(page).toHaveURL('https://www.saucedemo.com/v1/inventory.html');
+  await loginPage.checkUrl('https://www.saucedemo.com/v1/inventory.html');
   await expect(page.locator('#inventory_container').nth(1)).toBeVisible();
   await expect(page.getByText('Products')).toBeVisible();
 });

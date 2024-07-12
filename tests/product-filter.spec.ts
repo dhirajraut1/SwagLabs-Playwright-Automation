@@ -16,7 +16,7 @@ test.describe('Apply Filters', () => {
     await loginPage.fillUserName(process.env.STANDARD_USERNAME);
     await loginPage.fillPassword(process.env.PASSWORD);
     await loginPage.clickLoginButton();
-    await expect(loginPage.page).toHaveURL('https://www.saucedemo.com/v1/inventory.html');
+    await loginPage.checkUrl('https://www.saucedemo.com/v1/inventory.html');
   });
     /*
     This test case verifies that products can be filtered by name in descending order (Z to A).
