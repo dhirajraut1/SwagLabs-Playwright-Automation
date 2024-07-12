@@ -18,19 +18,34 @@ test.describe('Apply Filters', () => {
     await loginPage.clickLoginButton();
     await expect(loginPage.page).toHaveURL('https://www.saucedemo.com/v1/inventory.html');
   });
-
-    test('Filter Products by Name - A to Z', {
+    /*
+    This test case verifies that products can be filtered by name in descending order (Z to A).
+    Steps:
+    1. Select the filter option 'Name (Z to A)' from the dropdown.
+    2. Retrieve the names of all products displayed.
+    3. Verify that there are 6 products listed.
+    4. Sort the product names in descending order (Z to A) and verify that the displayed order matches the sorted order.
+    */
+    test('Filter Products by Name - Z to A', {
         tag: ['@purchase', '@filter', '@name' ]
     }, async ({ inventoryPage }) => {
-      await inventoryPage.selectProductFilter('Name (A to Z)');
+      await inventoryPage.selectProductFilter('Name (Z to A)');
 
       const productNames = await inventoryPage.getProductNames();
       expect(productNames).toHaveLength(6);
 
-      const sortedProductNames = [...productNames].sort();
+      const sortedProductNames = [...productNames].sort().reverse();
       expect(productNames).toEqual(sortedProductNames);
     }); 
 
+    /*
+    This test case verifies that products can be filtered by price in ascending order (Low to High).
+    Steps:
+    1. Select the filter option 'Price (low to high)' from the dropdown.
+    2. Retrieve the prices of all products displayed.
+    3. Verify that there are 6 products listed.
+    4. Check that each product price is less than or equal to the next product price to ensure correct sorting.
+    */
     test('Filter Products by Price - Low to High', {
         tag: ['@purchase', '@filter', '@price' ]
     }, async ({ inventoryPage }) => {

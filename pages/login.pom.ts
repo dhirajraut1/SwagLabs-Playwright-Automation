@@ -23,11 +23,11 @@ export class LoginPage {
     await this.page.goto('https://www.saucedemo.com/v1/index.html');
   }
 
-  async fillUserName(username: string) {
+  async fillUserName(username) {
     await this.elements.userNameInput.fill(username);
   }
 
-  async fillPassword(password: string) {
+  async fillPassword(password) {
     await this.elements.passwordInput.fill(password);
   }
 
@@ -38,4 +38,5 @@ export class LoginPage {
   async checkErrorMessage() {
     await expect(this.elements.errorText).toContainText('Epic sadface: Username and password do not match any user in this service');
   }
+
 }

@@ -12,7 +12,6 @@ export class InventoryPage {
     shoppingCart : Locator;
     cartItems : Locator;
     checkoutButton : Locator;
-
   };
   
   constructor(page: Page) {
@@ -38,10 +37,21 @@ export class InventoryPage {
     await expect(this.page).toHaveURL(url);
   }
 
+/**
+ * Selects a product filter.
+ *
+ * @param {string} filter - The filter to be selected.
+ * @return {Promise<void>} A Promise that resolves when the filter is selected.
+ */
   async selectProductFilter(filter: string) {
     await this.elements.productSortContainer.selectOption(filter);
   }
 
+  /**
+   * Retrieves the names of all products displayed.
+   *
+   * @return {Promise<string[]>} Array of product names
+   */
   async getProductNames(): Promise<string[]> {
     return await this.elements.productName.allTextContents();
   }
@@ -51,12 +61,22 @@ export class InventoryPage {
     return priceStrings.map(price => parseFloat(price.replace('$', '')));
   }
 
+  /**
+   * Adds the product with the specified name to the cart.
+   *
+   * @param {string} productName - The name of the product to add to the cart.
+   */
   async addProductToCart(productName: string) {
     const item = this.elements.inventoryItems.filter({ hasText: productName });
     const addButton = item.locator(this.elements.productAddToCartButton);
     await addButton.click();
   }
 
+  /**
+   * Checks the shopping cart count against the provided count.
+   *
+   * @param {number} count - The expected count to be checked against the shopping cart count.
+   */
   async checkShoppingCartCount(count: number) {
     await expect(this.elements.shoppingCart).toHaveText(`${count}`);
   }
@@ -65,6 +85,11 @@ export class InventoryPage {
     await this.elements.shoppingCart.click();
   }
 
+  /**
+   * Retrieves the text content of all cart items on the page.
+   *
+   * @return {Promise<string[]>} An array of strings representing the text content of cart items.
+   */
   async checkCartProducts(): Promise<string[]> {
     return await this.elements.cartItems.allTextContents();
   }
