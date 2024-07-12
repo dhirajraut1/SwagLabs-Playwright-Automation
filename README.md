@@ -30,21 +30,14 @@ The tests can be found in the `tests` directory. The tests cover the following s
 1. **Login Tests**
 
    * **Login with an Invalid User** : Tests the login functionality with an invalid user. Asserts the error message displayed after invalid login.
-
    * **Login with a Valid User** : Tests the login functionality with a valid user. Asserts the user is logged in and the inventory page is visible.
-
-
 2. **Filter Tests**
 
    * **Filter Products by Name - Z to A** : Tests the functionality of filtering products by name from Z to A. Checks for the products sorted in descending order of their names.
-
    * **Filter Products by Price - Low to High** : Tests the functionality of filtering products by price from low to high. Checks if the products are sorted in ascending order of their prices by comparing the prices.
-
-
 3. **Checkout Tests**
 
    * **Add items to the Cart** : Tests the ability to add items to the cart. Logins in the user before adding the items to the cart. Checks for the number and names of the added products.
-
    * **Perform Checkout** : Tests the checkout process, including filling in personal information and verifying the products in the checkout overview. Checks if the message and images are dispalyed.
 
 ## Pages
@@ -57,11 +50,36 @@ The tests interact with the following pages:
 * **Checkout Overview Page:** The checkout overview page is defined in the `pages/checkout-overview.pom.ts` file.
 * **Checkout Complete Page:** The checkout complete page is defined in the `pages/checkout-complete.pom.ts` file.
 
-
 ## Reports
 
-The test reports are generated in the `test-results` directory.
+There are two types of reports that can be generated after running the tests:
 
-```shell
-npx playwright show-report
-```
+1. **HTML Report**
+
+   The test reports are generated in the `test-results` directory.
+
+   To view the report, execute the given command:
+
+   ```shell
+   npx playwright show-report
+   ```
+2. **Allure Report**
+
+   The allure reports are generated in the `allure-report` directory.
+
+
+   > **Disclaimer**
+   In order to use Allure reports you need to have Java installed on your system and `allure-commandline` installed globally.
+
+
+   To install `allure-commandline` globally run:
+   ```shell
+   npm i allure-commandline -g
+   ```
+
+
+   To build and view Allure reports, execute given command:
+
+   ```shell
+   npm run view-allure-reports
+   ```

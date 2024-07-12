@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "view-allure-reports": "allure generate allure-results -o allure-report --clean && allure open allure-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.45.1",
-    "@types/node": "^20.14.10"
+    "@types/node": "^20.14.10",
+    "allure-commandline": "^2.29.0",
+    "allure-playwright": "^3.0.0-beta.6"
   },
   "dependencies": {
     "dotenv": "^16.4.5"
