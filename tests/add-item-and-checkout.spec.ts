@@ -22,10 +22,10 @@ const test = base.extend<{
 test.describe('Add item and checkout', () => {
   test.beforeEach(async ({ loginPage, inventoryPage }) => {
     await loginPage.navigate();
-    await loginPage.fillUserName('standard_user');
-    await loginPage.fillPassword('secret_sauce');
+    await loginPage.fillUserName(process.env.STANDARD_USERNAME);
+    await loginPage.fillPassword(process.env.PASSWORD);
     await loginPage.clickLoginButton();
-    await expect(loginPage.page).toHaveURL('https://www.saucedemo.com/v1/inventory.html');
+    await loginPage.checkUrl('https://www.saucedemo.com/v1/inventory.html');
     await inventoryPage.navigate();
   });
 

@@ -23,6 +23,9 @@ export class LoginPage {
     await this.page.goto('https://www.saucedemo.com/v1/index.html');
   }
 
+  async checkUrl(url: string) {
+    await expect(this.page).toHaveURL(url);
+  }
   async fillUserName(username) {
     await this.elements.userNameInput.fill(username);
   }
